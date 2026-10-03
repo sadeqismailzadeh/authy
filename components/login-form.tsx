@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { signIn } from 'next-auth/react';
+import { Button, PasswordInput, TextInput } from '@mantine/core';
 
 export function LoginForm() {
   const [error, setError] = useState<string | null>(null);
@@ -13,22 +14,21 @@ export function LoginForm() {
     });
 
     if (result?.error) {
-        setError(result.error);
+      setError('invalid credentials');
     }
   };
 
   return (
     <form action={credentialsAction}>
-      <label htmlFor="credentials-email">
-        Username
-        <input type="text" id="username" name="username" />
-      </label>
-      <label htmlFor="password">
-        Password
-        <input type="password" id="password" name="password" />
-      </label>
-      <input type="submit" value="Sign In" />
+      <TextInput label="Username" placeholder="Username" size="md" radius="md" type="text" id="username" name="username"/>
+      <PasswordInput label="Password" placeholder="Your password" mt="md" size="md" radius="md"  type="password" id="password" name="password" />
+      <Button fullWidth mt="xl" size="md" radius="md"   type="submit" value="Login" >
+        Login
+      </Button>
+
       {error && <p>{error}</p>}
     </form>
   );
 }
+
+
