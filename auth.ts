@@ -1,5 +1,38 @@
-import NextAuth from "next-auth"
- 
+import NextAuth from 'next-auth';
+import Credentials from 'next-auth/providers/credentials';
+
 export const { handlers, signIn, signOut, auth } = NextAuth({
-  providers: [],
-})
+  providers: [
+    Credentials({
+      // You can specify which fields should be submitted, by adding keys to the `credentials` object.
+      // e.g. domain, username, password, 2FA token, etc.
+      credentials: {
+        username: { label: 'Username' },
+        password: { label: 'Password', type: 'password' },
+      },
+      authorize: async (credentials) => {
+        console.log(credentials);
+        // let user = null;
+
+        if (credentials.username === 'admin' && credentials.password === 'admin') {
+          return { id: '1', name: 'admin' };
+        }
+
+        // // logic to salt and hash password
+        // const pwHash = saltAndHashPassword(credentials.password)
+
+        // // logic to verify if the user exists
+        // user = await getUserFromDb(credentials.email, pwHash)
+
+        // if (!user) {
+        //   // No user found, so this is their first attempt to login
+        //   // Optionally, this is also the place you could do a user registration
+        //   throw new Error("Invalid credentials.")
+        // }
+
+        // // return user object with their profile data
+        return null;
+      },
+    }),
+  ],
+});
