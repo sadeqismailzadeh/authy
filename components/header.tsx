@@ -8,15 +8,17 @@ export default async function Header() {
   const session = await auth();
   return (
     <>
-      <Group>
-        <NavLink href="/">Home</NavLink>
-        {session ? (
-          <>
-            <NavLink href="/dashboard">Dashboard</NavLink>
-          </>
-        ) : (
-          <NavLink href="/login">Login</NavLink>
-        )}
+      <Group justify="space-between"  w="100%" >
+        <Group>
+          <NavLink href="/">Home</NavLink>
+          {session ? (
+            <>
+              <NavLink href="/dashboard">Dashboard</NavLink>
+            </>
+          ) : (
+            <NavLink href="/login">Login</NavLink>
+          )}
+        </Group>
         <Text>{session ? 'Authenticated' : 'Not authenticated'} </Text>
       </Group>
     </>

@@ -14,8 +14,6 @@ export default async function HomePage() {
     <>
     <Title> Welcome to Authy</Title>
     <Text> This is a public page accessible for everyone </Text>
-
-    <AuthPanel session={session} />
     </>
   );
 }

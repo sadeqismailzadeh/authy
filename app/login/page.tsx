@@ -37,7 +37,6 @@ export default async function Login() {
 
         <LoginForm />
 
-        <AuthPanel session={session}/>
       </Paper>
     </div>
   );

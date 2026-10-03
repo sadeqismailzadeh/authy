@@ -1,10 +1,10 @@
-'use client'
+'use client';
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Anchor, Button } from '@mantine/core';
 
-export default function NavLink({ href, children }: { href: string; children: React.ReactNode;}) {
+export default function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
   const pathname = usePathname();
   const isActive = pathname === href;
 

@@ -3,15 +3,14 @@
 import React from 'react';
 import { usePathname } from 'next/navigation';
 import { Session } from 'next-auth';
-
+import { Text } from '@mantine/core';
 
 export default function AuthPanel({ session }: { session: Session | null}) {
   const pathname = usePathname();
   return (
     <>
-      <div>AuthPanel</div>
-      <p> Current path: {pathname}</p>
-      <p> Auth Status: {session ? 'Logged In' : 'Logged Out'}</p>
+      <Text> Current path: {pathname}</Text>
+      <Text> Auth Status: {session ? 'Logged In' : 'Logged Out'}</Text>
     </>
   );
 }
