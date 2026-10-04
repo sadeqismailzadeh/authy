@@ -3,9 +3,15 @@ import { Box, Divider, Flex, Grid, GridCol, Group, Stack } from '@mantine/core';
 import { auth } from '@/auth';
 import DashBoardLink from '@/components/dashboard-link';
 import NavLink from '@/components/nav-link';
+import { redirect } from 'next/navigation';
 
 export default async function DashboardLayout({ children }: { children: any }) {
   const session = await auth();
+
+  if (!session) {
+    redirect('/login');
+  }
+
   return (
     <>
       <Flex m="-md" style={{ minHeight: 'calc(100dvh - 150px)' }}>
