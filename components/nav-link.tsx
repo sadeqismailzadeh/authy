@@ -4,9 +4,17 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Anchor, Button } from '@mantine/core';
 
-export default function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
+export default function NavLink({
+  href,
+  children,
+  matchpattern,
+}: {
+  href: string;
+  children: React.ReactNode;
+  matchpattern?: string;
+}) {
   const pathname = usePathname();
-  const isActive = pathname === href;
+  const isActive = matchpattern ? pathname.includes(matchpattern) : pathname === href;
 
   return (
     <>
